@@ -5,7 +5,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.imooc.o2o.entity.Shop;
-
+/**
+ * 商铺接口定义
+ * @author zhangzhl
+ */
 public interface ShopDao {
 	
 	/**
