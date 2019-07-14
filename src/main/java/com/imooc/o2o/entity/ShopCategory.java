@@ -1,15 +1,27 @@
 package com.imooc.o2o.entity;
 
 import java.util.Date;
-
+/**
+ * 店铺类别
+ * @author zhangzhl
+ *
+ */
 public class ShopCategory {
+	// ID
 	private Long shopCategoryId;
+	// 店铺类别名称
 	private String shopCategoryName;
+	// 店铺类别描述
 	private String shopCategoryDesc;
+	// 图片
 	private String shopCategoryImg;
+	// 权重
 	private Integer priority;
+	// 创建时间
 	private Date createTime;
+	// 最后修改时间
 	private Date lastEditTime;
+	// 上级ID
 	private ShopCategory parentId;
 	
 	public Long getShopCategoryId() {

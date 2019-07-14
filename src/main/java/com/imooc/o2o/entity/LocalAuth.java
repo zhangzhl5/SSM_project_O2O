@@ -1,7 +1,11 @@
 package com.imooc.o2o.entity;
 
 import java.util.Date;
-
+/**
+ * 本地账号
+ * @author zhangzhl
+ *
+ */
 public class LocalAuth {
 	private Long localAuthId;
 	private String userName;

@@ -2,6 +2,11 @@ package com.imooc.o2o.entity;
 
 import java.util.Date;
 
+/**
+ * 区域实体类
+ * @author zhangzhl
+ *
+ */
 public class Area {
 	// ID
 	private Integer areaId;
@@ -13,6 +18,7 @@ public class Area {
 	private  Date createTime;
 	// 修改时间
 	private  Date lastEditTime;
+	
 	public Integer getAreaId() {
 		return areaId;
 	}
@@ -43,8 +49,5 @@ public class Area {
 	public void setLastEditTime(Date lastEditTime) {
 		this.lastEditTime = lastEditTime;
 	} 
-	
-	
-	
 
 }

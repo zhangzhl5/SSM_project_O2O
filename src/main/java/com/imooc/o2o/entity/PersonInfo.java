@@ -2,18 +2,30 @@ package com.imooc.o2o.entity;
 
 import java.util.Date;
 
+/**
+ * 用户实体类
+ * @author zhangzhl
+ */
 public class PersonInfo {
-	// 
+	// 用户ID
 	private long userId;
+	// 用户名称
 	private String name;
+	// 用户头像
 	private String profileImg;
+	// 用户邮箱
 	private String email;
+	// 性别
 	private String gender;
+	// 用户状态
 	private Integer enableStatus;
 	// 1、顾客 2、店家 3、超级管理员
 	private Integer userType;
+	// 创建时间
 	private Date createTime;
+	// 修改时间
 	private Date lastEditTime;
+	
 	public long getUserId() {
 		return userId;
 	}
@@ -68,7 +80,5 @@ public class PersonInfo {
 	public void setLastEditTime(Date lastEditTime) {
 		this.lastEditTime = lastEditTime;
 	}
-	
-	
 
 }

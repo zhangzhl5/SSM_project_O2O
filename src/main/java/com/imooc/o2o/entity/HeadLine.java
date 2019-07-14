@@ -1,16 +1,29 @@
 package com.imooc.o2o.entity;
 
 import java.util.Date;
-
+/**
+ * 头条
+ * @author zhangzhl
+ *
+ */
 public class HeadLine {
+	// ID
 	private Long lineId;
+	// 名称
 	private String lineName;
+	// 链接
 	private String lineLink;
+	// 图片
 	private String lineImg;
+	// 权重
 	private Integer priority;
+	// 状态 0-可用 1-不可用
 	private Integer enableStatus;
+	// 创建时间
 	private Date createTime;
+	// 修改时间
 	private Date lastEditTime;
+	
 	public Long getLineId() {
 		return lineId;
 	}

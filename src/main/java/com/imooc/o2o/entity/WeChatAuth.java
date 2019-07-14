@@ -1,7 +1,11 @@
 package com.imooc.o2o.entity;
 
 import java.util.Date;
-
+/**
+ * 微信账号
+ * @author zhangzhl
+ *
+ */
 public class WeChatAuth {
 	private Long wechatAuthId;
 	private String openId;

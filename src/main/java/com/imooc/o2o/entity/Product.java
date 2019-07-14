@@ -2,21 +2,39 @@ package com.imooc.o2o.entity;
 
 import java.util.Date;
 import java.util.List;
-
+/**
+ * 商品实体类
+ * @author zhangzhl
+ *
+ */
 public class Product {
+	// 商品ID
 	private Long productId;
+	// 商品名称
 	private String productName;
+	// 商品描述
 	private String productDesc;
-	private String imgAddr;// 简略图
+	// 简略图
+	private String imgAddr;
+	// 原价
 	private String normalPrice;
+	// 折扣价
 	private String promotionPrice;
+	// 权重
 	private Integer priority;
+	// 创建时间
 	private Date createTime;
+	// 修改时间
 	private Date lastEditTime;
+	// 状态 -1 不可用 0 下架 1 在前端系统展示
 	private Integer enableStatus;
+	// 商品图片
 	private List<ProductImg> productImgList;
+	// 商品类别
 	private ProductCategory productCategory;
+	// 商铺id
 	private Shop shop;
+	
 	public Long getProductId() {
 		return productId;
 	}
