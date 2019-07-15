@@ -5,6 +5,11 @@ import java.util.List;
 import com.imooc.o2o.entity.Shop;
 import com.imooc.o2o.enums.ShopStateEnum;
 
+/**
+ * 类描述：结果状态
+ * @author zhangzhl
+ *
+ */
 public class ShopExecution {
 	// 店铺状态
 	private int state;
@@ -12,31 +17,35 @@ public class ShopExecution {
 	private String stateInfo;
 	// 店铺数量
 	private int count;
-	// 操作的店铺
+	// 操作的店铺（增删改店铺的时候用得到）
 	private Shop shop;
-	// 店铺列表
+	// 店铺列表 （查询的时候用的到）
 	private List<Shop> shoplist;
 	
-	public ShopExecution() {
-		
+	// 无参构造器
+	public ShopExecution() { 
 	}
+	
 	// 店铺操作失败时用到的构造器
 	public ShopExecution(ShopStateEnum stateEnum) {
 		this.state = stateEnum.getState();
 		this.stateInfo = stateEnum.getStateInfo() ;
 	}
+	
 	// 店铺操作成功时用到的构造器
 	public ShopExecution(ShopStateEnum stateEnum,Shop shop) {
 		this.state = stateEnum.getState();
 		this.stateInfo = stateEnum.getStateInfo() ;
 		this.shop = shop;
 	}
+	
 	// 店铺操作成功时用到的构造器
 	public ShopExecution(ShopStateEnum stateEnum,List<Shop> shoplist) {
 		this.state = stateEnum.getState();
 		this.stateInfo = stateEnum.getStateInfo() ;
 		this.shoplist = shoplist;
 	}
+	
 	public int getState() {
 		return state;
 	}

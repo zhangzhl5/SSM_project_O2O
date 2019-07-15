@@ -12,6 +12,9 @@ import javax.imageio.ImageIO;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 
+/*
+ * 图片处理工具类
+ */
 public class ImageUtil {
 
 	private static String basePath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
@@ -20,19 +23,28 @@ public class ImageUtil {
 
 	private static Random r = new Random();
 
+	/**
+	 * 方法描述 ： 给图片添加水印
+	 * @param shopImgInputStream
+	 * @param targetAddr
+	 * @param fileName
+	 * @return
+	 */
 	public static String generateThumbnail(InputStream shopImgInputStream, String targetAddr,String fileName) {
-
+        // 新文件的名字
 		String realFileName = getRandomFileName();
+		// 获取文件的扩展名
 		String extension = getFileExtension(fileName);
+		// 创建目标目录
 		makeDirPath(targetAddr);
 		String relativeAddr = targetAddr + realFileName + extension;
-//		File dest = new File(PathUtil.getImgBasePath() + relativeAddr);
 		File dest = new File(relativeAddr);
 		try {
 			Thumbnails.of(shopImgInputStream).size(200, 200)
 					.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "11.jpg")), 0.25f)
 					.outputQuality(0.8f).toFile(dest);
 		} catch (IOException e) {
+			
 			e.printStackTrace();
 		}
 		return relativeAddr;
@@ -40,7 +52,8 @@ public class ImageUtil {
 
 	/**
 	 * 创建目标路径所涉及的目录
-	 * 
+	 * 例如：如果目标路径为Users/zhangzhl/Downloads/图片/xxx.jpg
+	 * 则Users、zhangzhl、Downloads、图片。这四个文件应都存在如果不存在则都应创建出来
 	 * @param targetAddr
 	 */
 	private static void makeDirPath(String targetAddr) {
@@ -58,8 +71,7 @@ public class ImageUtil {
 	 * @return
 	 */
 	private static String getFileExtension(String fileName) {
-
-//		String originalFileName = thumbnail.getName();
+		
 		return fileName.substring(fileName.lastIndexOf("."));
 	}
 

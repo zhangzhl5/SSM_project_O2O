@@ -26,13 +26,13 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	@Transactional
 	public ShopExecution addShop(Shop shop, InputStream shopImgInputStream ,String fileName) {
+		// 空值判断
 		if(shop == null) {
 			return new ShopExecution(ShopStateEnum.NULL_SHOP_INFO); 
 			
 		}
 		try {
 			// 给店铺信息赋初始值
-//			shop.setEnableStatus(0);
 			shop.setCreateTime(new Date());
 			shop.setLastEditTime(new Date());
 			// 添加店铺信息
@@ -47,6 +47,7 @@ public class ShopServiceImpl implements ShopService {
 					} catch (Exception e) {
 						throw new ShopOperationException("addshopImg  error :" + e.getMessage());
 					}
+					// 更新商铺的图片地址信息
 					effectedNum = shopDao.updateShop(shop);
 					if (effectedNum <= 0) {
 						throw new ShopOperationException("更新图片地址失败");
