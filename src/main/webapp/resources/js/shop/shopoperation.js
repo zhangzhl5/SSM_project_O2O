@@ -4,7 +4,9 @@
 $(function() {
 	var shopId = getQueryString('shopId');
 	var isEdit = shopId?true:false;
+	// 初始化RUL
 	var initUrl = '/o2o/shopadmin/getshopinitinfo';
+	// 注册店铺URL
 	var registerShopUrl = '/o2o/shopadmin/registershop';
 	var shopInfoUrl  = '/o2o/shopadmin/getshopbyid?shopId' + shopId;
 	var editShopUrl = '/o2o/shopadmin/modifyshop';
@@ -42,10 +44,12 @@ $(function() {
 			if(data.success) {
 				var tempHtml = '';
 				var tempAreaHtml = '';
+				// 初始化商铺分类的下拉选择数据
 				data.shopCategoryList.map(function(item,index) {
 					tempHtml += '<option data-id="' +item.shopCategoryId + '">'
 					+ item.shopCategoryName + '</option>';
 				});
+				// 初始化区域分类的下拉选择数据
 				data.areaList.map(function(item,index) {
 					tempAreaHtml += '<option data-id="' +item.areaId + '">'
 					+ item.areaName + '</option>';
@@ -73,7 +77,7 @@ $(function() {
 			 var shopImg = $('#shop-img')[0].files[0];
 			 var formData = new FormData();
 			 formData.append('shopImg',shopImg);
-			 formData.append('shopStr',JSON.stringify(shop));
+			 formData.append('shopStr',JSON.stringify(shop)); // JSON 将shop数据转化
 			 var verifyCodeActual = $('#j_kaptcha').val();
 			 if(!verifyCodeActual){
 				 $.toast('请输入验证码');

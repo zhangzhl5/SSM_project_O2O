@@ -16,7 +16,7 @@
  	FROM
  	tb_shop_category
  	<where>
- 	<if test="shopCategoryCondition != null">
+ 		<if test="shopCategoryCondition != null">
  		  AND parent_id is not null
  		</if>
  		<if test="shopCategoryCondition.parentId != null">

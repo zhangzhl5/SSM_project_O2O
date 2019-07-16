@@ -2,6 +2,11 @@ package com.imooc.o2o.util;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 请求处理工具类
+ * @author zhangzhl
+ *
+ */
 public class HttpServletRequestUtil {
 	
 	public static int getInt(HttpServletRequest request,String key) {

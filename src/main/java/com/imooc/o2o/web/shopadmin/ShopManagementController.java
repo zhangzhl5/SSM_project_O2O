@@ -30,9 +30,15 @@ import com.imooc.o2o.service.ShopService;
 import com.imooc.o2o.util.CodeUtil;
 import com.imooc.o2o.util.HttpServletRequestUtil;
 
+/**
+ * shop的controller层
+ * @author zhangzhl
+ *
+ */
 @Controller
 @RequestMapping(value = "/shopadmin")
 public class ShopManagementController {
+	
 	@Autowired
 	private ShopService shopService;
 	
@@ -93,6 +99,11 @@ public class ShopManagementController {
 	}
 	
 	
+	/**
+	 * 方法描述：获取商铺列表
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/getshoplist",method = RequestMethod.GET)
 	@ResponseBody
 	private Map <String,Object> getShopList(HttpServletRequest request){
@@ -142,6 +153,10 @@ public class ShopManagementController {
 		
 	}
 	
+	/**
+	 * 新增店铺时初始化相关下拉选择区域数据
+	 * @return
+	 */
 	@RequestMapping(value = "/getshopinitinfo",method = RequestMethod.GET)
 	@ResponseBody
 	private Map <String,Object> getShopInitInfo(){
@@ -161,9 +176,15 @@ public class ShopManagementController {
 		return modelMap;
 		
 	}
+	/**
+	 * 方法描述：店铺注册
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/registershop",method = RequestMethod.POST)
 	@ResponseBody
 	private Map<String,Object> registerShop(HttpServletRequest request){
+		// 返回必要的键值对结果
 		Map<String,Object> modelMap = new HashMap<String,Object>();
 		
 		if(!CodeUtil.checkVerifyCode(request)) {
@@ -206,8 +227,9 @@ public class ShopManagementController {
 				se = shopService. addShop(shop, shopImg.getInputStream(),shopImg.getOriginalFilename());
 				if(se.getState() ==  ShopStateEnum.CHECK.getState()) {
 					modelMap.put("success", true);
+					@SuppressWarnings("unchecked")
 					List<Shop> shopList = (List<Shop>)request.getSession().getAttribute("shopList");
-					if(shopList ==null || shopList.size() == 0 ) {
+					if(shopList == null || shopList.size() == 0 ) {
 						shopList = new ArrayList<Shop>();
 					}
 					shopList.add(se.getShop());
@@ -285,31 +307,5 @@ public class ShopManagementController {
 			return modelMap;
 		}
 	}
-	
-//	private static void inputStreamToFile(InputStream ins,File file) {
-//		OutputStream os = null;
-//		try {
-//			os = new FileOutputStream(file);
-//			int bytesRead = 0;
-//			byte[] buffer = new byte[2014];
-//			while((bytesRead = ins.read(buffer))!= -1) {
-//				os.write(buffer,0,bytesRead);
-//			}
-//		} catch (Exception e) {
-//			throw new RuntimeException("调用inputStreamToFile发生异常" + e.getMessage());
-//		} finally {
-//			try {
-//				if(os != null) {
-//					os.close();
-//				}
-//				if(ins != null) {
-//					ins.close();
-//				}
-//			} catch (IOException e) {
-//				throw new RuntimeException("inputStreamToFile关闭IO 发生异常" + e.getMessage());
-//			}
-//		}
-//		
-//	}
 
 }
