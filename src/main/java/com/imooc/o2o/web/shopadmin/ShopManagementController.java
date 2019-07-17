@@ -48,6 +48,10 @@ public class ShopManagementController {
 	@Autowired
 	private AreaService areaService;
 	
+	/**
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/getProductmanage",method = RequestMethod.GET)
 	@ResponseBody
 	private Map <String,Object> getProductmanage(HttpServletRequest request){
@@ -74,6 +78,10 @@ public class ShopManagementController {
 		
 	}
 	
+	/**
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/getshopmanagementinfo",method = RequestMethod.GET)
 	@ResponseBody
 	private Map <String,Object> getShopManagementInfo(HttpServletRequest request){
@@ -129,6 +137,11 @@ public class ShopManagementController {
 		
 	}
 	
+	/**
+	 * 方法描述：根据店铺ID获取店铺信息
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/getshopbyid",method = RequestMethod.GET)
 	@ResponseBody
 	private Map <String,Object> getShopById(HttpServletRequest request){
@@ -220,6 +233,7 @@ public class ShopManagementController {
 		//2、注册店铺
 		if(shop != null && shopImg != null) {
 			PersonInfo personInfo = (PersonInfo)request.getSession().getAttribute("user");
+			// session TODO
 			shop.setOwner(personInfo);
 			shop.setEnableStatus(3);
 			ShopExecution se ;
@@ -227,8 +241,10 @@ public class ShopManagementController {
 				se = shopService. addShop(shop, shopImg.getInputStream(),shopImg.getOriginalFilename());
 				if(se.getState() ==  ShopStateEnum.CHECK.getState()) {
 					modelMap.put("success", true);
+					// 该用户可以操作的店铺列表 
 					@SuppressWarnings("unchecked")
 					List<Shop> shopList = (List<Shop>)request.getSession().getAttribute("shopList");
+					
 					if(shopList == null || shopList.size() == 0 ) {
 						shopList = new ArrayList<Shop>();
 					}
