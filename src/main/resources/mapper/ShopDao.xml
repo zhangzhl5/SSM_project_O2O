@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.imooc.o2o.dao.ShopDao">
-
+	<!--  通过resultMap接收返回值，包括复合对象  column 对应数据库表的字段 ，property 对应的是实体类的字段属性-->
 	<resultMap type="com.imooc.o2o.entity.Shop" id="shopMap">
 	<id column = "shop_id" property="shopId"></id>
 	<result column = "shop_name" property = "shopName"></result>

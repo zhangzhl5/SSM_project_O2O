@@ -18,6 +18,13 @@ import com.imooc.o2o.util.ImageUtil;
 import com.imooc.o2o.util.PageCalculator;
 import com.imooc.o2o.util.PathUtil;
 
+/**
+ * 类描述： ShopService接口的实现类
+ * 需要考虑接口和实现类是怎么关联上的，如果有多个实现类在controller自动装配的时候是怎么注入的。
+ * 实现类自动注入了shopdao进行数据库持久化操作
+ * @author zhangzhl
+ *
+ */
 @Service
 public class ShopServiceImpl implements ShopService {
 	@Autowired
@@ -78,6 +85,11 @@ public class ShopServiceImpl implements ShopService {
 		return shopDao.queryByShopId(shodId);
 	}
 
+	/**
+	 * 方法描述：店铺信息修改
+	 * 两 步：1、店铺的图片信息修改
+	 * 		 2、店铺的其他内容修改
+	 */
 	@Override
 	public ShopExecution modifyShop(Shop shop, InputStream shopImgInputStream, String fileName) {
 		if(shop == null||shop.getShopId()==null) {
@@ -87,9 +99,11 @@ public class ShopServiceImpl implements ShopService {
 				//1、判断是否需要处理图片
 				if(shopImgInputStream !=null && fileName!=null && "".equals(fileName)){
 					Shop tempShop = shopDao.queryByShopId(shop.getShopId());
+					// 先将店铺的历史图片移除
 					if(tempShop.getShopImg()!=null) {
 						ImageUtil.deleteFileOrPath(tempShop.getShopImg());
 					}
+					// 将新的图片添加到店铺信息上
 					addShopImg(shop,shopImgInputStream,fileName);
 				}
 				// 2、更新店铺信息
@@ -107,6 +121,10 @@ public class ShopServiceImpl implements ShopService {
 		}
 	}
 
+	/**
+	 * 
+	 * 方法描述：获取店铺列表
+	 */
 	@Override
 	public ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize) {
 		int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
