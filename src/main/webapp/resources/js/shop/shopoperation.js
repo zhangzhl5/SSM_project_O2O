@@ -2,13 +2,14 @@
  * 
  */
 $(function() {
+	// 如果前端传入的shopID有值，则getQueryString这个方法定义在common.js中就能获取到
 	var shopId = getQueryString('shopId');
 	var isEdit = shopId?true:false;
 	// 初始化RUL
 	var initUrl = '/o2o/shopadmin/getshopinitinfo';
 	// 注册店铺URL
 	var registerShopUrl = '/o2o/shopadmin/registershop';
-	var shopInfoUrl  = '/o2o/shopadmin/getshopbyid?shopId' + shopId;
+	var shopInfoUrl  = '/o2o/shopadmin/getshopbyid?shopId=' + shopId;
 	var editShopUrl = '/o2o/shopadmin/modifyshop';
 	if(!isEdit){
 		getShopInitInfo();
@@ -58,8 +59,12 @@ $(function() {
 				$('#area').html(tempAreaHtml);
 			}
 		});
+	}
 		$('#submit').click(function(){
 			 var shop = {};
+			 if(isEdit){
+				 shop.shopId = shopId;
+			 }
 			 shop.shopName = $('#shop-name').val();
 			 shop.shopAddr = $('#shop-addr').val();
 			 shop.phone = $('#shop-phone').val();
@@ -101,6 +106,4 @@ $(function() {
 				 }
 			 })
 		});
-	}
-	
 }) 
