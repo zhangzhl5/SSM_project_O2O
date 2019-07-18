@@ -79,6 +79,7 @@ public class ShopManagementController {
 	}
 	
 	/**
+	 * 方法描述：商铺管理信息
 	 * @param request
 	 * @return
 	 */

@@ -4,6 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * 类描述：路由功能类
+ * @author zhangzhl
+ *
+ */
 @Controller
 @RequestMapping(value = "shopadmin",method= {RequestMethod.GET})
 
