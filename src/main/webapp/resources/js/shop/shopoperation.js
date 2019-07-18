@@ -9,6 +9,7 @@ $(function() {
 	var initUrl = '/o2o/shopadmin/getshopinitinfo';
 	// 注册店铺URL
 	var registerShopUrl = '/o2o/shopadmin/registershop';
+	// 根据shopId请求后台
 	var shopInfoUrl  = '/o2o/shopadmin/getshopbyid?shopId=' + shopId;
 	var editShopUrl = '/o2o/shopadmin/modifyshop';
 	if(!isEdit){

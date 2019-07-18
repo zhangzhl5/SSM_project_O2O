@@ -28,15 +28,15 @@ $(function () {
 		});
 		$('.shop-wrap').html(html);
 	}
-
+	// 根据店铺状态校验是否应该显示进入店铺管理页面
 	function goShop(status, id) {
-		if (status = 1) {
+		if (status == 1) {
 			return '<a href="/o2o/shopadmin/shopmanage?shopId='+ id +'">进入</a>';
 		} else {
 			return '';
 		}
 	}
-
+   // 根据状态值返回对应的名称
 	function shopStatus(status) {
 		if (status == 0) {
 			return '审核中';

@@ -29,6 +29,7 @@
 		<id column = "name" property= "name"></id>
 	</association>	
 	</resultMap>
+	<!-- 分页查询 -->
 	<select id="queryShopList"  resultMap ="shopMap" >
 	SELECT 
 	s.shop_id,
@@ -77,8 +78,10 @@
 	</where>
 	ORDER BY 
 	s.priority  DESC 
+	<!--  从第几行数据rowIndex开始取，一次取多少条数据-->
 	LIMIT #{rowIndex},#{pagesize};
 	</select>
+	<!-- 获取商铺列表的种数 -->
 	<select id = "queryShopCount" resultType = "int">
 	SELECT 
 	COUNT(1)
