@@ -6,6 +6,11 @@ import org.apache.ibatis.annotations.Param;
 
 import com.imooc.o2o.entity.ProductCategory;
 
+/**
+ * 类描述：商品种类数据库交互DAO层
+ * @author zhangzhl
+ *
+ */
 public interface ProductCategoryDao {
 	
 	/**

@@ -13,9 +13,14 @@ import com.imooc.o2o.enums.ProductCategoryStateEnum;
 import com.imooc.o2o.exceptions.ProductCategoryOperationException;
 import com.imooc.o2o.service.ProductCategoryService;
 
+/**
+ * 类描述：商品接口实现类
+ * @author zhangzhl
+ *
+ */
 @Service
 public class ProductCategoryServiceImpl implements ProductCategoryService {
-	
+	// 自动装配DAO层
 	@Autowired
 	private ProductCategoryDao productCategoryDao;
 

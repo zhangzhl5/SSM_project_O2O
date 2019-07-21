@@ -2,7 +2,9 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <!-- 商品种类数据库交互DAO层的mapper映射文件 -->
  <mapper  namespace="com.imooc.o2o.dao.ProductCategoryDao">
+ 	<!--  目的：为DAO接口方法提供sql语句配置-->
  	<select id="queryProductCategoryList" resultType = "com.imooc.o2o.entity.ProductCategory"
  	parameterType = "long">
  	SELECT 
@@ -20,7 +22,7 @@
  	priority DESC
  	</select>
  	
- 	
+	<!-- 批量添加商品种类sql -->
  	<insert id = "batchInsertProductCategory"  parameterType = "java.util.List" >
  	INSERT  INTO
  	tb_product_category(product_category_name,priority,create_time,shop_id)
@@ -35,6 +37,7 @@
  	)
  	</foreach>
  	</insert>
+ 	<!-- 删除商品种类sql -->
  	<delete id="deleteProductCategory">
  	DELETE FROM
  	tb_product_category

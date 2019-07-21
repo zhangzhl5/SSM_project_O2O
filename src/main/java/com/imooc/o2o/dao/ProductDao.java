@@ -6,6 +6,11 @@ import org.apache.ibatis.annotations.Param;
 
 import com.imooc.o2o.entity.Product;
 
+/**
+ * 类描述：商品数据库交互DAO接口
+ * @author zhangzhl
+ *
+ */
 public interface ProductDao {
 	/**
 	 * 查询商品列表并分页，可输入的条件有：商品名（模糊），商品状态，店铺Id,商品类别
@@ -28,7 +33,7 @@ public interface ProductDao {
 	int queryProductCount(@Param("productCondition") Product productCondition);
 
 	/**
-	 * 
+	 * 方法描述：根据商品ID查询商品详情
 	 * @param productId
 	 * @return
 	 */

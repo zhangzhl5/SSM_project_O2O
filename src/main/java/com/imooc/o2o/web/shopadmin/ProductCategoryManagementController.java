@@ -21,12 +21,25 @@ import com.imooc.o2o.enums.ProductCategoryStateEnum;
 import com.imooc.o2o.exceptions.ProductCategoryOperationException;
 import com.imooc.o2o.service.ProductCategoryService;
 
+/**
+ * 类描述：商品类别的控制层
+ * 主要包括：1、获取商品类别的列表
+ * 		   2、添加商品种类
+ * 		   3、删除商品种类
+ * @author zhangzhl
+ *
+ */
 @Controller
 @RequestMapping("/shopadmin")
 public class ProductCategoryManagementController {
 	@Autowired
 	private ProductCategoryService productCategoryService;
 	
+	/**
+	 * 方法描述：获取商品种类
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/getproductcategorylist", method = RequestMethod.GET )
 	@ResponseBody
 	private Result<List<ProductCategory>>  getProductCategoryList(HttpServletRequest request){
@@ -46,6 +59,12 @@ public class ProductCategoryManagementController {
 		}
 	}
 	
+	/**
+	 * 方法描述：增加商品种类
+	 * @param productCategoryList
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/addproductcategorys", method = RequestMethod.POST )
 	@ResponseBody
 	private Map<String,Object>  addProductCategorys(@RequestBody List<ProductCategory> productCategoryList,
@@ -76,6 +95,12 @@ public class ProductCategoryManagementController {
 		
 	}
 	
+	/**
+	 * 方法描述：删除商品种类
+	 * @param productCategoryId
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/removeproductcategory", method = RequestMethod.POST )
 	@ResponseBody
 	private Map<String,Object>  removeProductCategory(Long productCategoryId,

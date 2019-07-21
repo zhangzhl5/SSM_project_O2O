@@ -7,7 +7,7 @@ import java.util.Date;
  *
  */
 public class ProductCategory {
-	// ID
+	// 商品类别ID
 	private Long productCategoryId;
 	// 店铺ID
 	private Long shopId;
