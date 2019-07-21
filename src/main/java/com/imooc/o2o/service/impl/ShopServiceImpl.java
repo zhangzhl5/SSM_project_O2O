@@ -127,6 +127,7 @@ public class ShopServiceImpl implements ShopService {
 	 */
 	@Override
 	public ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize) {
+		// 前端只显示页数，后端数据库存的是行数所以需要进行转换
 		int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
 		List<Shop> shopList = shopDao.queryShopList(shopCondition, rowIndex, pageSize);
 		int count = shopDao.queryShopCount(shopCondition);

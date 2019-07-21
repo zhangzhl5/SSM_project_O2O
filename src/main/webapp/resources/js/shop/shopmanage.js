@@ -1,4 +1,5 @@
 $(function () {
+	// 商铺信息按钮跳转获取不到shopId
 	var shopId = getQueryString('shopId');
 	var shopInfoUrl = '/o2o/shopadmin/getshopmanagementinfo?shopId='+shopId;
 	$.getJSON(shopInfoUrl,function(data){
