@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 类描述：路由功能类
+ * 在spring—web中定义的视图解析器会将路径信息补全
  * @author zhangzhl
  *
  */

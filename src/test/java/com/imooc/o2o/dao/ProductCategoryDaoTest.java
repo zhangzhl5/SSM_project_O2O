@@ -30,6 +30,7 @@ public class ProductCategoryDaoTest extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void testABatchInsertProductCategory() {
 		ProductCategory productCategory  = new ProductCategory();
 		productCategory.setProductCategoryName("商品类别四");
@@ -42,6 +43,7 @@ public class ProductCategoryDaoTest extends BaseTest {
 		assertEquals(1, effNum);
 	}
 	@Test
+	@Ignore
 	public void testCDeleteProductCategory() {
 		long shopId = 2l;
 		List<ProductCategory>  productCategoryList = productCategoryDao.queryProductCategoryList(shopId);

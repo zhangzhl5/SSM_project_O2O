@@ -30,6 +30,7 @@ import com.imooc.o2o.service.ProductCategoryService;
  *
  */
 @Controller
+// 一级路由
 @RequestMapping("/shopadmin")
 public class ProductCategoryManagementController {
 	@Autowired
@@ -43,19 +44,23 @@ public class ProductCategoryManagementController {
 	@RequestMapping(value = "/getproductcategorylist", method = RequestMethod.GET )
 	@ResponseBody
 	private Result<List<ProductCategory>>  getProductCategoryList(HttpServletRequest request){
-		// TODO
-		Shop shop = new Shop();
-		shop.setShopId(2l);
-		request.getSession().setAttribute("currentShop", shop);
+		// TODO 目前还没有实现登陆功能 ，登陆的session还不能获取到
+//		Shop shop = new Shop();
+//		shop.setShopId(2l);
+//		// 手动设置session
+//		request.getSession().setAttribute("currentShop", shop);
+		// 获取当前商铺
 		Shop currentShop = (Shop) request.getSession().getAttribute("currentShop");
 		List<ProductCategory>  list = null;
+		// 如果当前商铺为空说明没有商铺的操作权限，返回错误的信息
 		if(currentShop != null && currentShop.getShopId() > 0) {
+			// 如果有值拿到shopID 返回该商铺的商品种类
 			list = productCategoryService.getProductCategoryList(currentShop.getShopId());
 			return new Result<List<ProductCategory>> (true,list);
 		} else {
+			// 错误的信息
 			ProductCategoryStateEnum ps = ProductCategoryStateEnum.INNER_ERROR;
 			return new Result<List<ProductCategory>> (false,ps.getState(),ps.getStateInfo());
-			
 		}
 	}
 	

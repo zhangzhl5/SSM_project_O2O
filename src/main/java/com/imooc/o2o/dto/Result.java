@@ -6,13 +6,14 @@ package com.imooc.o2o.dto;
 public class Result<T> {
 
 	private boolean success;// 是否成功标志
-
+	// 泛型
 	private T data;// 成功时返回的数据
 
 	private String errorMsg;// 错误信息
 
-	private int errorCode;
+	private int errorCode; // 错误代码
 
+	// 无参的构造器
 	public Result() {
 	}
 
