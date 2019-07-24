@@ -76,6 +76,7 @@ public class ProductCategoryManagementController {
 			HttpServletRequest request){
 		Map<String,Object> modelMap = new HashMap<String,Object>();
 		Shop currentShop =  (Shop) request.getSession().getAttribute("currentShop");
+		// 商品类别是在那个店铺下创建的
 		for(ProductCategory  pc : productCategoryList ) {
 			pc.setShopId(currentShop.getShopId());
 		}

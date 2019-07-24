@@ -5,6 +5,11 @@ import java.util.List;
 import com.imooc.o2o.entity.ProductCategory;
 import com.imooc.o2o.enums.ProductCategoryStateEnum;
 
+/**
+ * 类描述：产品类别的结果封装类
+ * @author zhangzhl
+ *
+ */
 public class ProductCategoryExecution {
 	// 结果状态
 	private int state;
@@ -18,13 +23,13 @@ public class ProductCategoryExecution {
 	public ProductCategoryExecution() {
 	}
 
-	// 预约失败的构造器
+	// 操作失败的构造器
 	public ProductCategoryExecution(ProductCategoryStateEnum stateEnum) {
 		this.state = stateEnum.getState();
 		this.stateInfo = stateEnum.getStateInfo();
 	}
 
-	// 预约成功的构造器
+	// 操作成功的构造器
 	public ProductCategoryExecution(ProductCategoryStateEnum stateEnum,
 			List<ProductCategory> productCategoryList) {
 		this.state = stateEnum.getState();

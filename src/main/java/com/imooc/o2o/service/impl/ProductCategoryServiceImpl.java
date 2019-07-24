@@ -30,6 +30,10 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		return productCategoryDao.queryProductCategoryList(shopId);
 	}
 
+	
+	/**
+	 * 商品类别的批量添加
+	 */
 	@Override
 	@Transactional
 	public ProductCategoryExecution batchAddProductCategory(List<ProductCategory> productCategoryList)
@@ -50,10 +54,16 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		}
 	}
 
+	/**
+	 * 方法描述：删除商品类别
+	 * @see com.imooc.o2o.service.ProductCategoryService#deleteProductCategory(long, long)
+	 */
 	@Override
 	@Transactional
+	// 统一用事务管理起来
 	public ProductCategoryExecution deleteProductCategory(long productCategoryId, long shopId)
 			throws ProductCategoryOperationException {
+		// TODO 将此商品类别下的商品的类别ID置为空
 		try {
 			int effNum =  productCategoryDao.deleteProductCategory(productCategoryId, shopId);
 			if(effNum <= 0 ) {
