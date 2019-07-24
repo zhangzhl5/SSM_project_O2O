@@ -58,15 +58,25 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	@Transactional
+	// 1、处理缩略图，获取缩略图相对路径并赋值给product
+	// 2、往tb_product中写入信息，获取productid
+	// 3、结合productid批量处理商品详情图
+	// 4、将商品详情图列表插入到tb_product_img中
 	public ProductExecution addProduct(Product product, ImageHolder thumbnail, List<ImageHolder> productImgs) throws RuntimeException {
+		// 空值判断
 		if (product != null && product.getShop() != null && product.getShop().getShopId() != null) {
+			// 给商品设置属性值
 			product.setCreateTime(new Date());
 			product.setLastEditTime(new Date());
+			// 默认为上架状态
 			product.setEnableStatus(1);
+			// 如果商品缩略图不为空则添加
 			if (thumbnail != null) {
 				addThumbnail(product, thumbnail);
 			}
+			
 			try {
+				// 创建商品信息
 				int effectedNum = productDao.insertProduct(product);
 				if (effectedNum <= 0) {
 					throw new RuntimeException("创建商品失败");
@@ -74,6 +84,7 @@ public class ProductServiceImpl implements ProductService {
 			} catch (Exception e) {
 				throw new RuntimeException("创建商品失败:" + e.toString());
 			}
+			// 如果商品详情图不为空则添加
 			if (productImgs != null && productImgs.size() > 0) {
 				addProductImgs(product, productImgs);
 			}
