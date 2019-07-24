@@ -9,6 +9,8 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import com.imooc.o2o.dto.ImageHolder;
+
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 
@@ -30,17 +32,17 @@ public class ImageUtil {
 	 * @param fileName
 	 * @return
 	 */
-	public static String generateThumbnail(InputStream shopImgInputStream, String targetAddr,String fileName) {
+	public static String generateThumbnail(ImageHolder thumbnail, String targetAddr) {
         // 新文件的名字
 		String realFileName = getRandomFileName();
 		// 获取文件的扩展名
-		String extension = getFileExtension(fileName);
+		String extension = getFileExtension(thumbnail.getImageName());
 		// 创建目标目录
 		makeDirPath(targetAddr);
 		String relativeAddr = targetAddr + realFileName + extension;
 		File dest = new File(relativeAddr);
 		try {
-			Thumbnails.of(shopImgInputStream).size(200, 200)
+			Thumbnails.of(thumbnail.getImage()).size(200, 200)
 					.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "11.jpg")), 0.25f)
 					.outputQuality(0.8f).toFile(dest);
 		} catch (IOException e) {

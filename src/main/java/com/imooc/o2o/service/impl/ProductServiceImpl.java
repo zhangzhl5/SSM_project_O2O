@@ -1,25 +1,20 @@
 package com.imooc.o2o.service.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-
 import com.imooc.o2o.dao.ProductDao;
 import com.imooc.o2o.dao.ProductImgDao;
+import com.imooc.o2o.dto.ImageHolder;
 import com.imooc.o2o.dto.ProductExecution;
 import com.imooc.o2o.entity.Product;
 import com.imooc.o2o.entity.ProductImg;
 import com.imooc.o2o.enums.ProductStateEnum;
 import com.imooc.o2o.service.ProductService;
-import com.imooc.o2o.util.ImageUtil;
 import com.imooc.o2o.util.PageCalculator;
-
-import ch.qos.logback.core.util.FileUtil;
 
 /**
  * 商品接口的实现类
@@ -63,8 +58,7 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	@Transactional
-	public ProductExecution addProduct(Product product, CommonsMultipartFile thumbnail,
-			List<CommonsMultipartFile> productImgs) throws RuntimeException {
+	public ProductExecution addProduct(Product product, ImageHolder thumbnail, List<ImageHolder> productImgs) throws RuntimeException {
 		if (product != null && product.getShop() != null && product.getShop().getShopId() != null) {
 			product.setCreateTime(new Date());
 			product.setLastEditTime(new Date());
@@ -95,8 +89,8 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	@Transactional
-	public ProductExecution modifyProduct(Product product, CommonsMultipartFile thumbnail,
-			List<CommonsMultipartFile> productImgs) throws RuntimeException {
+	public ProductExecution modifyProduct(Product product,ImageHolder thumbnail, List<ImageHolder> productImgs) 
+			throws RuntimeException {
 		if (product != null && product.getShop() != null && product.getShop().getShopId() != null) {
 			product.setLastEditTime(new Date());
 			if (thumbnail != null) {
@@ -124,7 +118,7 @@ public class ProductServiceImpl implements ProductService {
 		}
 	}
 
-	private void addProductImgs(Product product, List<CommonsMultipartFile> productImgs) {
+	private void addProductImgs(Product product, List<ImageHolder> productImgs ) {
 //		String dest = FileUtil.getShopImagePath(product.getShop().getShopId());
 //		List<String> imgAddrList = ImageUtil.generateNormalImgs(productImgs, dest);
 //		if (imgAddrList != null && imgAddrList.size() > 0) {
@@ -155,7 +149,7 @@ public class ProductServiceImpl implements ProductService {
 		productImgDao.deleteProductImgByProductId(productId);
 	}
 
-	private void addThumbnail(Product product, CommonsMultipartFile thumbnail) {
+	private void addThumbnail(Product product, ImageHolder productImgs) {
 //		String dest = FileUtil.getShopImagePath(product.getShop().getShopId());
 //		String thumbnailAddr = ImageUtil.generateThumbnail(thumbnail, dest);
 //		product.setImgAddr(thumbnailAddr);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.imooc.o2o.dto.ImageHolder;
 import com.imooc.o2o.dto.ProductExecution;
 import com.imooc.o2o.entity.Product;
 
@@ -21,10 +22,9 @@ public interface ProductService {
 	Product getProductById(long productId);
 
 	// 添加商品
-	ProductExecution addProduct(Product product, CommonsMultipartFile thumbnail, List<CommonsMultipartFile> productImgs)
+	ProductExecution addProduct(Product product, ImageHolder thumbnail, List<ImageHolder> productImgs)
 			throws RuntimeException;
 	// 修改商品信息
-	ProductExecution modifyProduct(Product product, CommonsMultipartFile thumbnail,
-			List<CommonsMultipartFile> productImgs) throws RuntimeException;
+	ProductExecution modifyProduct(Product product, ImageHolder thumbnail, List<ImageHolder> productImgs) throws RuntimeException;
 	
 }
