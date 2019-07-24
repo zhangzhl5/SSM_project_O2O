@@ -21,6 +21,11 @@ import com.imooc.o2o.util.PageCalculator;
 
 import ch.qos.logback.core.util.FileUtil;
 
+/**
+ * 商品接口的实现类
+ * @author zhangzhl
+ *
+ */
 @Service
 public class ProductServiceImpl implements ProductService {
 	@Autowired
@@ -28,6 +33,10 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductImgDao productImgDao;
 
+	/**
+	 * 获取商品列表
+	 * @see com.imooc.o2o.service.ProductService#getProductList(com.imooc.o2o.entity.Product, int, int)
+	 */
 	@Override
 	public ProductExecution getProductList(Product productCondition, int pageIndex, int pageSize) {
 		int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
@@ -39,11 +48,19 @@ public class ProductServiceImpl implements ProductService {
 		return pe;
 	}
 
+	/**
+	 * 根据ID查询商品
+	 * @see com.imooc.o2o.service.ProductService#getProductById(long)
+	 */
 	@Override
 	public Product getProductById(long productId) {
 		return productDao.queryProductByProductId(productId);
 	}
 
+	/**
+	 * 添加商品
+	 * @see com.imooc.o2o.service.ProductService#addProduct(com.imooc.o2o.entity.Product, org.springframework.web.multipart.commons.CommonsMultipartFile, java.util.List)
+	 */
 	@Override
 	@Transactional
 	public ProductExecution addProduct(Product product, CommonsMultipartFile thumbnail,
@@ -72,6 +89,10 @@ public class ProductServiceImpl implements ProductService {
 		}
 	}
 
+	/**
+	 * 修改商品信息
+	 * @see com.imooc.o2o.service.ProductService#modifyProduct(com.imooc.o2o.entity.Product, org.springframework.web.multipart.commons.CommonsMultipartFile, java.util.List)
+	 */
 	@Override
 	@Transactional
 	public ProductExecution modifyProduct(Product product, CommonsMultipartFile thumbnail,

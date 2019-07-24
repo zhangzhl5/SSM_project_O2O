@@ -2,13 +2,24 @@ package com.imooc.o2o.entity;
 
 import java.util.Date;
 
+/**
+ * 商品图片实体类
+ * @author zhangzhl
+ */
 public class ProductImg {
+	// 商品图片
 	private Long productImgId;
+	// 商品图片存放地址
 	private String imgAddr;
+	// 商品图片描述
 	private String imgDesc;
+	// 权重
 	private Integer priority;
+	// 创建时间
 	private Date createTime;
+	// 商品ID
 	private Long productId;
+	
 	public Long getProductImgId() {
 		return productImgId;
 	}

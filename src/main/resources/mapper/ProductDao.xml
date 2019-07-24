@@ -3,6 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.imooc.o2o.dao.ProductDao">
+	<!-- 商品结果集 -->
 	<resultMap id="productMap" type="com.imooc.o2o.entity.Product">
 		<id column="product_id" property="productId" />
 		<result column="product_name" property="productName" />
@@ -14,7 +15,7 @@
 		<result column="create_time" property="createTime" />
 		<result column="last_edit_time" property="lastEditTime" />
 		<result column="enable_status" property="enableStatus" />
-		<result column="point" property="point" />
+		<!-- <result column="point" property="point" /> -->
 		<association property="productCategory" column="product_category_id"
 			javaType="com.imooc.o2o.entity.ProductCategory">
 			<id column="product_category_id" property="productCategoryId" />
@@ -51,6 +52,7 @@
 			<result column="product_id" property="productId" />
 		</collection>
 	</resultMap>
+	<!-- 查询商品-->
 	<select id="queryProductList" resultMap="productMap">
 		SELECT
 		product_id,
@@ -63,7 +65,7 @@
 		create_time,
 		last_edit_time,
 		enable_status,
-		point,
+		<!-- point, -->
 		product_category_id,
 		shop_id
 		FROM
@@ -93,7 +95,7 @@
 		priority DESC
 		LIMIT #{rowIndex},#{pageSize};
 	</select>
-
+    <!-- 查询商品数量 -->
 	<select id="queryProductCount" resultType="int">
 		SELECT count(1) FROM tb_product
 		<where>
@@ -118,6 +120,8 @@
 			</if>
 		</where>
 	</select>
+	
+	<!--  根据商品ID查询商品 -->
 	<select id="queryProductByProductId" resultMap="productMap"
 		parameterType="Long">
 		<!-- 具体的sql -->
@@ -132,7 +136,7 @@
 		p.create_time,
 		p.last_edit_time,
 		p.enable_status,
-		p.point,
+		<!-- p.point, -->
 		p.product_category_id,
 		p.shop_id,
 		pm.product_img_id,
@@ -153,19 +157,21 @@
 		ORDER BY
 		pm.priority DESC
 	</select>
+	<!-- 新增商品 -->
 	<insert id="insertProduct" parameterType="com.imooc.o2o.entity.Product"
 		useGeneratedKeys="true" keyProperty="productId" keyColumn="product_id">
 		INSERT INTO
 		tb_product(product_name,product_desc,img_addr,
 		normal_price,promotion_price,priority,create_time,
-		last_edit_time,enable_status,point,product_category_id,
+		last_edit_time,enable_status,product_category_id,
 		shop_id)
 		VALUES
 		(#{productName},#{productDesc},#{imgAddr},
 		#{normalPrice},#{promotionPrice},#{priority},#{createTime},
-		#{lastEditTime},#{enableStatus},#{point},#{productCategory.productCategoryId},
+		#{lastEditTime},#{enableStatus},#{productCategory.productCategoryId},
 		#{shop.shopId})
 	</insert>
+	<!-- 更新商品信息  -->
 	<update id="updateProduct" parameterType="com.imooc.o2o.entity.Product"
 		keyProperty="product_id" useGeneratedKeys="true">
 		UPDATE tb_product
@@ -178,7 +184,7 @@
 			<if test="priority != null">priority=#{priority},</if>
 			<if test="lastEditTime != null">last_edit_time=#{lastEditTime},</if>
 			<if test="enableStatus != null">enable_status=#{enableStatus},</if>
-			<if test="point != null">point=#{point},</if>
+			<!-- <if test="point != null">point=#{point},</if> -->
 			<if
 				test="productCategory != null
 				 and productCategory.productCategoryId != null">
@@ -188,6 +194,7 @@
 		WHERE product_id = #{productId}
 		AND shop_id=#{shop.shopId}
 	</update>
+	<!--  更新商品的商品类别置为空 -->
 	<update id="updateProductCategoryToNull" parameterType="Long"
 		keyProperty="product_id" useGeneratedKeys="true">
 		UPDATE tb_product
@@ -196,6 +203,8 @@
 		WHERE product_category_id =
 		#{productCategoryId}
 	</update>
+	
+	<!-- 删除商品  -->
 	<delete id="deleteProduct">
 		DELETE FROM
 		tb_product

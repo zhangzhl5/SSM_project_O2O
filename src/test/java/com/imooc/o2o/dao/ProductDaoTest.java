@@ -1,4 +1,4 @@
-package com.imooc.o2o.dao;
+ package com.imooc.o2o.dao;
 
 import static org.junit.Assert.assertEquals;
 
@@ -77,6 +77,7 @@ public class ProductDaoTest extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void testBQueryProductList() throws Exception {
 		Product product = new Product();
 		List<Product> productList = productDao.queryProductList(product, 0, 3);
@@ -98,6 +99,7 @@ public class ProductDaoTest extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void testCQueryProductByProductId() throws Exception {
 		long productId = 1;
 		ProductImg productImg1 = new ProductImg();
@@ -123,6 +125,7 @@ public class ProductDaoTest extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void testDUpdateProduct() throws Exception {
 		Product product = new Product();
 		product.setProductId(1L);
