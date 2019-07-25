@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.imooc.o2o.BaseTest;
+import com.imooc.o2o.dto.ImageHolder;
 import com.imooc.o2o.dto.ShopExecution;
 import com.imooc.o2o.entity.Area;
 import com.imooc.o2o.entity.PersonInfo;
@@ -59,7 +60,8 @@ public class ShopServiceTest extends BaseTest {
 		shop.setAdvice("审核中 ");
 		File shopImg = new File("/Users/zhangzhl/Downloads/image/324099.jpg");
 		InputStream is = new FileInputStream(shopImg);
-		ShopExecution se =	shopService.addShop(shop,is, shopImg.getName());
+		ImageHolder img = new ImageHolder(shopImg.getName(), is);
+		ShopExecution se =	shopService.addShop(shop,img );
 		assertEquals(ShopStateEnum.CHECK.getState(), se.getState());
 		
 	}
