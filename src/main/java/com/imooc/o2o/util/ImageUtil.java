@@ -2,7 +2,6 @@ package com.imooc.o2o.util;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -39,8 +38,11 @@ public class ImageUtil {
 		String extension = getFileExtension(thumbnail.getImageName());
 		// 创建目标目录
 		makeDirPath(targetAddr);
+		// 获取文件存储的相对路径(带文件名)
 		String relativeAddr = targetAddr + realFileName + extension;
+		// 获取文件要保存到的目标路径
 		File dest = new File(relativeAddr);
+		// 调用Thumbnails生成带有水印的图片
 		try {
 			Thumbnails.of(thumbnail.getImage()).size(200, 200)
 					.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "11.jpg")), 0.25f)
@@ -49,6 +51,7 @@ public class ImageUtil {
 			
 			e.printStackTrace();
 		}
+		// 返回图片相对地址路径
 		return relativeAddr;
 	}
 
