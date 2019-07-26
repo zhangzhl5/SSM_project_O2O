@@ -61,7 +61,7 @@ $(function() {
 						+item.productCategoryId+'">'
 						+item.productCategoryName+'</option>';					
 				});
-				$('category').html(optionHtml);
+				$('#category').html(optionHtml);
 			}
 		});
 	}

@@ -23,26 +23,36 @@ public class ShopAdmincontroller {
 	
 	@RequestMapping(value = "/shoplist")
 	public String shopList() {
+		// 转发至店铺列表界面
 		return "shop/shoplist";
 		
 	}
 	
 	@RequestMapping(value = "/shopmanage")
 	public String shopManager() {
+		// 转发至店铺管理界面
 		return "shop/shopmanage";
 		
 	}
 	
 	@RequestMapping(value = "/productmanage")
 	public String productManager() {
+		// 转发至商品管理界面
 		return "shop/productmanage";
 		
 	}
 	
 	@RequestMapping(value = "/productcategorymanage",method= {RequestMethod.GET})
 	public String produCtcategoryManage() {
+		// 转发至商品类别管理界面
 		return "shop/productcategorymanage";
 		
+	}
+	
+	@RequestMapping(value = "/productoperation")
+	public String productOperation() {
+		// 转发至商品添加/编辑界面
+		return "shop/productoperation";
 	}
 
 }

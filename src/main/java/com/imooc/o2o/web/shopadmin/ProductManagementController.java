@@ -166,10 +166,11 @@ public class ProductManagementController {
 			modelMap.put("errMsg", e.toString());
 			return modelMap;
 		}
+		// 若product不为空，缩略图以及详情图不为空则开始进行商品添加操作
 		if (product != null && thumbnail != null && productImgs.size() > 0) {
 			try {
-				Shop currentShop = (Shop) request.getSession().getAttribute(
-						"currentShop");
+				// 从session中获取当前店铺的ID并赋值给product，减少对前端数据的依赖
+				Shop currentShop = (Shop) request.getSession().getAttribute("currentShop");
 				Shop shop = new Shop();
 				shop.setShopId(currentShop.getShopId());
 				product.setShop(shop);
