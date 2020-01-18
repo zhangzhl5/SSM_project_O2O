@@ -1,37 +1,63 @@
-# 020
+# SSM到Spring Boot 从零开发校园商铺平台
 
-#### 介绍
-小型SSM练手项目
+## 前端展示系统
 
-#### 软件架构
-软件架构说明
+### 头条展示
 
+### 店铺类别展示
 
-#### 安装教程
+### 区域展示
 
-1. xxxx
-2. xxxx
-3. xxxx
+### 店铺
 
-#### 使用说明
+- 列表展示
+- 查询
+- 详情
 
-1. xxxx
-2. xxxx
-3. xxxx
+### 商品
 
-#### 参与贡献
+- 列表展示
+- 查询
+- 详情
 
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
+## 店家系统
 
+### Local账号维护
 
-#### 码云特技
+### 微信账号维护
 
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### 店铺信息维护
+
+- 新增店铺
+
+	- 新增时下拉数据的初始化
+	- 验证码功能
+	- 前后端的联调
+	- 店铺实体信息的录入
+	- 图片的处理
+
+- 修改店铺
+
+	- 店铺信息编辑
+
+- 删除店铺
+
+### 权限验证
+
+### 商品类别维护
+
+## 超级管理员系统
+
+### 头条信息维护
+
+### 店铺类别信息维护
+
+### 区域信息维护
+
+### 权限验证
+
+### 店铺管理
+
+### 用户管理
+
+*XMind: ZEN - Trial Version*
