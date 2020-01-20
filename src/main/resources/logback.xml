@@ -20,7 +20,7 @@
   	<file> ${log.filePath}/debug.log</file>
   	<rollingPolicy class = "ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
   	<!-- 文件名称 -->
-  	<FileNamePattern>${log.filePath}/debug/debug.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+  	<fileNamePattern>${log.filePath}/debug/debug.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
   	<maxHistory>${log.maxHistory}</maxHistory>
   	</rollingPolicy>
   	<encoder>
@@ -39,7 +39,7 @@
   	<file> ${log.filePath}/info.log</file>
   	<rollingPolicy class = "ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
   	<!-- 文件名称 -->
-  	<FileNamePattern>${log.filePath}/info/info.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+  	<fileNamePattern>${log.filePath}/info/info.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
   	<maxHistory>${log.maxHistory}</maxHistory>
   	</rollingPolicy>
   	<encoder>
@@ -59,7 +59,7 @@
   	<file> ${log.filePath}/error.log</file>
   	<rollingPolicy class = "ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
   	<!-- 文件名称 -->
-  	<FileNamePattern>${log.filePath}/error/error.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+  	<fileNamePattern>${log.filePath}/error/error.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
   	<maxHistory>${log.maxHistory}</maxHistory>
   	</rollingPolicy>
   	<encoder>
@@ -71,7 +71,7 @@
   		<onMismatch>DENY</onMismatch>
   	</filter>
   </appender>
-  <logger name = "com.imooc.o2o" level = "${log.level}" additivity = "true">
+  <logger name = "com.invest.webspider" level = "${log.level}" additivity = "true">
   	<appdener-ref ref = "debugAppender"/>
   	<appdener-ref ref = "infoAppender"/>
   	<appdener-ref ref = "errorAppender"/>
